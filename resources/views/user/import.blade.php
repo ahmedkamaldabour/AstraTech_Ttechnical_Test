@@ -17,7 +17,7 @@
         @endif
 
         <div class="download-template">
-            <a href="{{ route('admin.downloadExample') }}" class="btn btn-primary">Download Empty Excel File</a>
+            <a href="{{ route('admin.downloadExample') }}" class="btn btn-primary">Download Empty File</a>
         </div>
 
         <div class="import-form">
