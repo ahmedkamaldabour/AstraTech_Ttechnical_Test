@@ -1,26 +1,34 @@
 @extends('inc.master')
 
 @section('content')
-    <h1>Import Excel</h1>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <div class="container">
+        <div class="page-header">
+            <h1>Import Excel</h1>
         </div>
-    @endif
 
-{{--    Donload excel template example--}}
-    <a href="{{ route('admin.downloadExample') }}">Download Empty Excel File</a>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-    <br><br>
+        <div class="download-template">
+            <a href="{{ route('admin.downloadExample') }}" class="btn btn-primary">Download Empty Excel File</a>
+        </div>
 
-    <form action="{{ route('admin.importExcel') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input type="file" name="excel_file">
-        <button type="submit">Import</button>
-    </form>
+        <div class="import-form">
+            <form action="{{ route('admin.importExcel') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="excel_file">Choose Excel File to Import:</label>
+                    <input type="file" class="form-control-file" id="excel_file" name="excel_file">
+                </div>
+                <button type="submit" class="btn btn-success">Import</button>
+            </form>
+        </div>
+    </div>
 @endsection
